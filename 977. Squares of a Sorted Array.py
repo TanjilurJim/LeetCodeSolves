@@ -16,7 +16,28 @@
 # Output: [4,9,9,49,121]
 
 class Solution:
+    #t.c = O(nlogn)
     def sortedSquares(self, nums: List[int]) -> List[int]:
         sqrd = [x ** 2 for x in nums]
         sqrd.sort()
         return sqrd
+
+
+#Two Pointer Approach: T.C = O(n), S.C = O(n)
+
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        result = []
+
+        l, r = 0, len(nums) - 1
+
+        while l <= r:
+            if abs(nums[l]) > abs(nums[r]):
+                result.append((abs(nums[l] * nums[l])))
+                l += 1
+            else:
+                result.append((abs(nums[r] * nums[r])))
+                r -= 1
+
+        return result[::-1]
+
+
