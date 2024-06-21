@@ -32,24 +32,49 @@
 def maxSatisfied(customers,grumpy,minutes):
     #T.C= O(N)
     #S.C = O(1)
-    initial_satisfaction = 0
-    max_extra_satisfaction = 0
-    current_window_satisfaction = 0
+    # initial_satisfaction = 0
+    # max_extra_satisfaction = 0
+    # current_window_satisfaction = 0
+    #
+    # for i in range(len(customers)):
+    #     if grumpy[i] == 0:
+    #         initial_satisfaction += customers[i]
+    #     elif i < minutes:
+    #         current_window_satisfaction += customers[i]
+    #
+    # max_extra_satisfaction = current_window_satisfaction
+    #
+    # for i in range(minutes, len(customers)):
+    #     current_window_satisfaction += customers[i] * grumpy[i]
+    #     current_window_satisfaction -= customers[i - minutes] * grumpy[i - minutes]
+    #     max_extra_satisfaction = max(max_extra_satisfaction, current_window_satisfaction)
+    #
+    # return initial_satisfaction + max_extra_satisfaction
+    l = 0
+    window = 0
+    max_window = 0
+    satisfied = 0
 
-    for i in range(len(customers)):
-        if grumpy[i] == 0:
-            initial_satisfaction += customers[i]
-        elif i < minutes:
-            current_window_satisfaction += customers[i]
+    for r in range(len(customers)):
+        # If the owner is grumpy at minute r, consider these customers for the window
+        if grumpy[r] == 1:
+            window += customers[r]
+        else:
+            # Directly add to satisfied if the owner is not grumpy
+            satisfied += customers[r]
 
-    max_extra_satisfaction = current_window_satisfaction
+        # If the window exceeds the allowed minutes, adjust from the left
+        if r - l + 1 > minutes:
+            # Only subtract from window if the owner was grumpy at minute l
+            if grumpy[l] == 1:
+                window -= customers[l]
+            l += 1
 
-    for i in range(minutes, len(customers)):
-        current_window_satisfaction += customers[i] * grumpy[i]
-        current_window_satisfaction -= customers[i - minutes] * grumpy[i - minutes]
-        max_extra_satisfaction = max(max_extra_satisfaction, current_window_satisfaction)
+        # Update the maximum possible additional satisfaction from a grumpy period
+        max_window = max(max_window, window)
 
-    return initial_satisfaction + max_extra_satisfaction
+    return satisfied + max_window
+
 
 customers = [1,0,1,2,1,1,7,5]
 grumpy = [0,1,0,1,0,1,0,1]
