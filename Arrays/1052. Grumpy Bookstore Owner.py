@@ -1,4 +1,5 @@
-#There is a bookstore owner that has a store open for n minutes. Every minute, some number of
+#There is a bookstore owner that has a store open
+# for n minutes. Every minute, some number of
 # customers enter the store. You are given an integer array customers of length n where
 # customers[i] is the number of the customer that enters the store at the start of the ith minute
 # and all those customers leave after the end of that minute.
@@ -29,4 +30,16 @@
 # Sliding Window
 
 def maxSatisfied(customers,grumpy,minutes):
-    return 0
+
+    customers = []
+    for i in range(1,10):
+        customers.append(i)
+
+
+    return customers
+
+customer = [12,23,43]
+n=[]
+j = 0
+print(maxSatisfied(customer,n,j))
+
