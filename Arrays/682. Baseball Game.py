@@ -86,3 +86,4 @@ def sumofStacks(operations):
 ops = ["5","-2","4","C","D","9","+","+"]
 
 print(sumofStacks(ops))
+
