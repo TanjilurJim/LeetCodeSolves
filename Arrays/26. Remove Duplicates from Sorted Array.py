@@ -33,42 +33,42 @@
 
 #topics : Arrays, Two Pointers
 
-# def removeDuplicates(nums):
+def removeDuplicates(nums):
 
-    #T.C = O(n)
-    #S.C = O(1)
+    # T.C = O(n)
+    # S.C = O(1)
 
-#     l = 1
+    l = 1
 
-#     for r in range(1,len(nums)):
+    for r in range(1,len(nums)):
 
-#         if nums[r] != nums[r-1]:
-#             nums[l] = nums[r]
-#             l +=1
+        if nums[r] != nums[r-1]:
+            nums[l] = nums[r]
+            l +=1
 
-#     return l
+    return l
 
 
-# nums = [0,0,1,1,1,2,2,3,3,4]
+nums = [0,0,1,1,1,2,2,3,3,4]
 
-# print(removeDuplicates(nums))
+print(removeDuplicates(nums))
 
 # practice  08-08-25
 
 
-def removeDuplicates(nums):
+# def removeDuplicates(nums):
 
-    result = [nums[0]]
-    x = nums[0]
+#     result = [nums[0]]
+#     x = nums[0]
 
-    for i in range (1, len(nums)):
-        if nums[i] != x:
-            result.append (nums[i])
-            x =nums[i]
-    return len(result), result
+#     for i in range (1, len(nums)):
+#         if nums[i] != x:
+#             result.append (nums[i])
+#             x =nums[i]
+#     return len(result), result
     
-nums  = [0,0,1,2,2,3,4,4,5,6,7,7,7,9]
+# nums  = [0,0,1,2,2,3,4,4,5,6,7,7,7,9]
 
-print(removeDuplicates(nums))
+# print(removeDuplicates(nums))
 
 
